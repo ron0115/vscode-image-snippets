@@ -15,6 +15,7 @@ class ImgSnippetProvider implements vscode.CompletionItemProvider {
         .getText(new vscode.Range(position.with(undefined, 0), position))
         .trim()
       if (command !== config.tpl.slice(0, 1)) {
+        resolve([])
         return
       }
       // 获取上一行到这行的文本

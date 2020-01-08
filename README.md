@@ -14,9 +14,9 @@ customize your template
 
 ## Extension Settings
 
-- `Extension.tpl`: Custom snippets template, (e.g. `width: ${width}px;`), support injecting `${width}` `${height}`
+- `Extension.tpl`: Custom snippets template, (e.g. `width: ${width}px;`)
 
-  > some **Available Variables** below
+  > some **Available Variables** below to inject into template
 
   | variable | description           |
   | -------- | --------------------- |
@@ -26,3 +26,4 @@ customize your template
 ## TODO
 
 - Get more variables about image information injects to template if need
+- Support Array for `Extention.tpl`, set multi spinnets avaliable !
