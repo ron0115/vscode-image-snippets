@@ -1,0 +1,76 @@
+{
+  "name": "image-snippets",
+  "displayName": "Image Snippets",
+  "description": "generate image snippets insert to your editor",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.41.0"
+  },
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/ron0115/vscode-image-snippets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ron0115/vscode-image-snippets"
+  },
+  "categories": [
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "css",
+    "image",
+    "snippets",
+    "img",
+    "size",
+    "background"
+  ],
+  "activationEvents": [
+    "onLanguage:html",
+    "onLanguage:vue",
+    "onLanguage:css",
+    "onLanguage:less",
+    "onLanguage:scss",
+    "onLanguage:sass",
+    "onLanguage:stylus"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "image-snippets configuration",
+      "properties": {
+        "ImgSnippet.tpl": {
+          "type": "string",
+          "default": "width: ${width}px;\nheight: ${height}px;",
+          "markdownDescription": "Custom snippets template, (e.g. `width: ${width}px;`), support ${width} ${height}"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/lodash": "^4.14.149",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.41.0",
+    "glob": "^7.1.5",
+    "mocha": "^6.2.2",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4",
+    "vscode-test": "^1.2.2"
+  },
+  "dependencies": {
+    "clipboardy": "^2.1.0",
+    "globby": "^10.0.1",
+    "jimp": "^0.9.3",
+    "lodash": "^4.17.15",
+    "normalize-path": "^3.0.0"
+  }
+}
