@@ -2,7 +2,8 @@
   "name": "image-snippets",
   "displayName": "Image Snippets",
   "description": "generate image snippets insert to your editor",
-  "version": "0.0.2",
+  "version": "0.0.1",
+  "publisher": "ron0115",
   "engines": {
     "vscode": "^1.41.0"
   },
