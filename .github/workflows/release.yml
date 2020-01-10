@@ -18,6 +18,7 @@ jobs:
       - name: Setup
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           npm install
           npm install -g vsce
