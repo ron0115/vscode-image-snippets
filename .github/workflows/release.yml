@@ -7,10 +7,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-      - uses: lannonbr/vsce-action@master
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 10.x # 配置Node环境
+        uses: actions/setup-node@v1 # 配置脚本来自 https://github.com/actions/setup-node
         with:
-          args: 'publish patch -p $VSCE_TOKEN'
+          node-version: '10.x'
+      - name: Setup
         env:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
+      - run: |
+        npm install
+        npm i vsce -g
+        npm run release
