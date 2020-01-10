@@ -55,7 +55,7 @@
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile",
     "test": "node ./out/test/runTest.js",
-    "release": "npm run semantic-release"
+    "release": "semantic-release"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
