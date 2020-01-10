@@ -38,11 +38,12 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "image-snippets configuration",
+      "title": "Image Snippets",
       "properties": {
         "ImgSnippet.tpl": {
           "type": "string",
           "default": "width: ${width}px;\nheight: ${height}px;",
+          "description": "Customize snippets template",
           "markdownDescription": "Custom snippets template, (e.g. `width: ${width}px;`), support ${width} ${height}"
         }
       }

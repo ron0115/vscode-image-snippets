@@ -1,6 +1,8 @@
-# image-snippets
+# Image Snippets
 
-"image-snippets" can detect your image source path at last line, auto complete some snippets such as with / height.
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ron0115.image-snippets" target="_blank" rel="noopener noreferrer"><img width="100" src="./images/icon.png"></a></p>
+
+"Image Snippets" can detect your image source path at last line, auto complete some snippets such as width / height.
 
 ## Features
 
@@ -27,3 +29,4 @@ customize your template
 
 - Get more variables about image information injects to template if need
 - Support Array for `Extention.tpl`, set multi spinnets avaliable !
+- Support http(s) url detect
