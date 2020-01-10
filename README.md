@@ -1,6 +1,6 @@
 # Image Snippets
 
-<p><a href="https://marketplace.visualstudio.com/items?itemName=ron0115.image-snippets" target="_blank" rel="noopener noreferrer"><img width="100" src="./images/icon.png"></a></p>
+<p align="center"><a href="https://marketplace.visualstudio.com/items?itemName=ron0115.image-snippets" target="_blank" rel="noopener noreferrer"><img width="100" src="./images/icon.png"></a></p>
 
 "Image Snippets" can detect your image source path at last line, auto complete some snippets such as width / height.
 
