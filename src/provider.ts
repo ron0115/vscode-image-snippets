@@ -26,6 +26,7 @@ class ImgSnippetProvider implements vscode.CompletionItemProvider {
         )
       )
       const result = await this.process.cover(lineText)
+      // console.log(result)
       if (!result) {
         return resolve([])
       }
