@@ -30,3 +30,4 @@ customize your template
 - [ ] Get more variables about image information injects to template if need
 - [ ] Support Array for `Extention.tpl`, set multi spinnets avaliable !
 - [x] Support http(s) url detect
+- [ ] Support path alias detect (e.g `'@' => './'`)
