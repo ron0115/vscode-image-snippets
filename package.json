@@ -75,7 +75,7 @@
     "clipboardy": "^2.1.0",
     "globby": "^10.0.1",
     "jimp": "0.9.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "normalize-path": "^3.0.0"
   },
   "release": {
