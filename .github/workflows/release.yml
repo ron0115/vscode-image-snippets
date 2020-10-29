@@ -20,6 +20,6 @@ jobs:
           VSCE_TOKEN: ${{ secrets.VSCE_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          npm install
+          yarn
           npm install -g vsce
-          npm run release
+          yarn release
