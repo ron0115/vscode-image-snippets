@@ -1,9 +1,9 @@
 import { read } from 'jimp'
 import * as path from 'path'
-import { window, workspace } from 'vscode'
+import { window, workspace, env } from 'vscode'
 import * as os from 'os'
 import normalize from 'normalize-path'
-import fs from 'fs-extra'
+import * as fs from 'fs-extra'
 import { parse } from 'comment-json'
 // const clipboardy = require('clipboardy')
 function complied(str: string, context: { [key: string]: string }) {
@@ -22,6 +22,10 @@ class ImgSnippet {
     }
   ) {
     this.initAliasPaths()
+
+    workspace.onDidChangeWorkspaceFolders(_e => {
+      this.initAliasPaths()
+    })
   }
 
   aliasPaths: { [key: string]: string } = {}
@@ -31,7 +35,11 @@ class ImgSnippet {
   }
 
   get workspacePath() {
-    return workspace.getWorkspaceFolder(this.currentFileURI!)?.uri.fsPath
+    return (
+      (this.currentFileURI &&
+        workspace.getWorkspaceFolder(this.currentFileURI!)?.uri.fsPath) ||
+      (workspace.workspaceFolders && workspace.workspaceFolders[0].uri.fsPath)
+    )
   }
 
   // 匹配相对路径
@@ -44,13 +52,19 @@ class ImgSnippet {
   }
 
   initAliasPaths() {
+    if (!this.workspacePath) {
+      return
+    }
     const pathFlag = os.platform() === 'win32' ? '\\' : '/'
 
     const tsconfigPath = `${this.workspacePath}${pathFlag}tsconfig.json`
     const jsconfigPath = `${this.workspacePath}${pathFlag}jsconfig.json`
+
     const paths: { [key: string]: string } = {
-      ...parse(fs.readFileSync(tsconfigPath).toString()).compilerOptions.paths,
-      ...parse(fs.readFileSync(jsconfigPath).toString()).compilerOptions.paths
+      ...(fs.pathExistsSync(tsconfigPath) &&
+        parse(fs.readFileSync(tsconfigPath).toString()).compilerOptions.paths),
+      ...(fs.pathExistsSync(jsconfigPath) &&
+        parse(fs.readFileSync(jsconfigPath).toString()).compilerOptions.paths)
     }
     this.aliasPaths = Object.fromEntries(
       Object.entries(paths).map(item => [
