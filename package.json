@@ -58,10 +58,12 @@
     "release": "semantic-release"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.2",
     "@types/glob": "^7.1.1",
     "@types/lodash": "^4.14.149",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.11.7",
+    "@types/normalize-path": "^3.0.0",
     "@types/vscode": "^1.41.0",
     "glob": "^7.1.5",
     "mocha": "^6.2.2",
@@ -73,6 +75,7 @@
   },
   "dependencies": {
     "clipboardy": "^2.1.0",
+    "comment-json": "^4.1.0",
     "globby": "^10.0.1",
     "jimp": "0.9.3",
     "lodash": "^4.17.19",
