@@ -28,10 +28,8 @@ class ImgSnippet {
   get workspacePath() {
     return workspace.getWorkspaceFolder(this.currentFileURI!)?.uri.fsPath
   }
-  // private regPxVw: RegExp = /([-]?[\d.]+)pxw/
-  // private regPxVh: RegExp = /([-]?[\d.]+)pxh/
+
   // 匹配相对路径
-  // private regFilePath: RegExp = /(\.{1,2}(\/?))+([^\/]+\/)*[^\/]+\.\w+/
   regUrlPath: RegExp = /((http(s)*:)*\/\/)(\w|\.|\/)+/
   regFilePath: RegExp = /(\.{1,2}(\/?))+([^\/]+\/)*[^\/]+\.\w+/
 
@@ -64,8 +62,8 @@ class ImgSnippet {
     const paths = this.aliasPaths
     const keys = Object.keys(paths)
     const aliasKey = keys.find(item => targetPath.startsWith(item))
-    // 替换别名
     if (aliasKey) {
+      // 替换别名
       targetPath = targetPath.replace(aliasKey, paths[aliasKey])
       const fullpath = path.join(
         normalize(this.workspacePath!),
@@ -127,7 +125,7 @@ class ImgSnippet {
     if (this.regUrlPath.test(str)) {
       return str.match(this.regUrlPath)
     }
-    // TODO: 用alias paths forEach 有一个正则就return一个match出来
+
     if (this.regFilePath.test(str)) {
       return str.match(this.regFilePath)
     }
@@ -136,10 +134,6 @@ class ImgSnippet {
       const originReg = this.getRegFilePath(item)
       if (originReg.test(str)) {
         match = str.match(originReg)
-        // if (match) {
-        //   // 替换成alias
-        //   match[0] = match[0].replace(item, this.aliasPaths[item])
-        // }
       }
     })
     return match || false
