@@ -27,6 +27,7 @@ customize your template
 
 ## TODO
 
-- [ ] Get more variables about image information injects to template if need
-- [ ] Support Array for `Extention.tpl`, set multi spinnets avaliable !
+- [x] Support `alias` detected in `tsconfig.json` or `jsconfig.json`
 - [x] Support http(s) url detect
+- [ ] Support Array for `Extention.tpl`, set multi spinnets avaliable!
+- [ ] Get more variables about image information injects to template if need
