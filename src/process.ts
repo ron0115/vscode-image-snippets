@@ -1,5 +1,4 @@
 import { read } from 'jimp'
-import { template } from 'lodash'
 import * as path from 'path'
 import { window, workspace } from 'vscode'
 import * as os from 'os'
@@ -7,7 +6,13 @@ import normalize from 'normalize-path'
 import fs from 'fs-extra'
 import { parse } from 'comment-json'
 // const clipboardy = require('clipboardy')
-
+function complied(str: string, context: { [key: string]: string }) {
+  return str.replace(/\${(.*?)}/g, (match, $1) => {
+    // $1表示第一个括号内匹配的值
+    console.log(match, $1)
+    return context[$1.trim()]
+  })
+}
 class ImgSnippet {
   constructor(
     private config: {
@@ -96,8 +101,8 @@ class ImgSnippet {
       info = await this.getImageInfo(path, true)
     }
 
-    const complied = template(this.config.tpl)
-    const result = complied(info)
+    // const complied = template(this.config.tpl)
+    const result = complied(this.config.tpl, info as any)
 
     return {
       label: result,
