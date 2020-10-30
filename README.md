@@ -6,13 +6,38 @@
 
 ## Features
 
+### Custom your snippets template
+
+`width:${width}px; height:${height}px;`
+
 ![feat-default](images/feat-1.gif)
 
-customize your template
-
-> e.g. `background-size: ${width}px ${height}px;`
+`background-size: ${width}px ${height}px;`
 
 ![feat-custom](images/feat-2.gif)
+
+### detect alias in project
+
+`tsconfig.json` or `jsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+```css
+.icon {
+  background: url(~@/img/icon.png);
+  /* parse to path: ${rootDir}/src/img/icon.png */
+  /* and return snippets below */
+}
+```
 
 ## Extension Settings
 

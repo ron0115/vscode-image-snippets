@@ -9,7 +9,6 @@ import { parse } from 'comment-json'
 function complied(str: string, context: { [key: string]: string }) {
   return str.replace(/\${(.*?)}/g, (match, $1) => {
     // $1表示第一个括号内匹配的值
-    console.log(match, $1)
     return context[$1.trim()]
   })
 }
@@ -29,7 +28,7 @@ class ImgSnippet {
   }
 
   aliasPaths: { [key: string]: string } = {}
-
+  aliasBaseUrl?: string
   get currentFileURI() {
     return window.activeTextEditor?.document.uri
   }
@@ -66,6 +65,15 @@ class ImgSnippet {
       ...(fs.pathExistsSync(jsconfigPath) &&
         parse(fs.readFileSync(jsconfigPath).toString()).compilerOptions.paths)
     }
+    this.aliasBaseUrl =
+      (fs.pathExistsSync(tsconfigPath) &&
+        parse(fs.readFileSync(tsconfigPath).toString()).compilerOptions
+          .baseUrl) ||
+      (fs.pathExistsSync(jsconfigPath) &&
+        parse(fs.readFileSync(jsconfigPath).toString()).compilerOptions
+          .baseUrl) ||
+      ''
+
     this.aliasPaths = Object.fromEntries(
       Object.entries(paths).map(item => [
         item[0].replace('/*', ''),
@@ -85,6 +93,7 @@ class ImgSnippet {
       // 替换别名
       targetPath = targetPath.replace(aliasKey, paths[aliasKey])
       const fullpath = path.join(
+        normalize(this.aliasBaseUrl || ''),
         normalize(this.workspacePath!),
         normalize(targetPath)
       )
