@@ -39,6 +39,8 @@
 }
 ```
 
+![feat-custom](images/feat-3.gif)
+
 ## Extension Settings
 
 - `Extension.tpl`: Custom snippets template, (e.g. `width: ${width}px;`)
